@@ -1,0 +1,178 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+
+	<script>
+		var saldo = 100.5; //Float
+		var nome = prompt("me diga seu nome.");
+
+		alert("Olá " + (nome) + " é um prazer ter você por aqui!")
+		function inicio() {
+
+			var escolha = parseInt(prompt('Selecione uma opção 1.) Saldo 2.) Extrato 3.) Saque 4.) Deposito 5.) Transferência 6.) Sair'));
+
+			switch (escolha) {
+				case 0:
+					erro();
+					break;
+				case 1:
+					ver_saldo();
+					break;
+				case 2:
+					extrato();
+					break;
+				case 3:
+					fazer_saque();
+					break;
+				case 4:
+					fazer_deposito();
+					break;
+				case 5:
+					transferencia();
+				case 6:
+					sair();
+				default:
+					erro();
+			}
+		}
+
+		function ver_saldo() {
+			var senha = parseInt(prompt("Qual a sua senha?"));
+			while (senha != 3589){
+				alert("senha incorreta");
+				ver_saldo ()
+			}
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
+		}
+
+		function fazer_deposito() {
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			// Not a Number
+			if (isNaN(deposito) || deposito === '') {
+				alert('Por favor, informe um número:');
+				fazer_deposito();
+			} else {
+				saldo += deposito;
+				ver_saldo();
+			}
+		}
+
+		function fazer_saque() {
+			var senha = parseInt(prompt("Qual a sua senha?"));
+			while (senha != 3589){
+				alert("senha incorreta");
+				fazer_saque ()
+			}
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+
+			if (saque > saldo || saque <= 0) {
+				alert("Operação não autorizada")
+				fazer_saque();
+			}
+			else if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número:');
+				fazer_saque();
+			} else {
+				saldo -= saque;
+
+				ver_saldo();
+			}
+		
+
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 6');
+			inicio();
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				alert ( nome + ", foi um prazer ter você por aqui!")
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+		function extrato() {
+			var senha = parseInt(prompt("Qual a sua senha?"));
+			while (senha != 3589){
+				alert("senha incorreta");
+				extrato ()
+			}
+			alert("Saque = R$100,00");
+			alert("Saque = R$200,00");
+			alert("Deposito = R$500,00");
+			alert("Transferência = R$600,00");
+
+			inicio ()
+		}
+
+		function transferencia() {
+			var senha = parseInt(prompt("Qual a sua senha?"));
+			while (senha != 3589){
+				alert("senha incorreta");
+				transferencia ()
+			}
+			var conta = parseInt(prompt("Me diga a conta que você deseja fazer a transferência"));
+
+			if (isNaN(conta) || conta === '') {
+				alert("Tente novamente");
+				transferencia();
+			}
+			else {
+				var confirmação = parseInt(prompt("Essa é a conta " + conta + " correta? 1= sim / 2= não"));
+				if (confirmação === 1) {
+					var tra = parseFloat(prompt("Me diga o  valor da transferência"));
+					if (tra > saldo || tra <= 0) {
+						alert("Operação não autorizada")
+						transferencia();
+					}
+					else if (isNaN(tra) || tra === '') { //isNan é para dizer que não é um número
+						alert("Tente novamente");
+					}
+					else {
+						saldo -= tra;
+
+						ver_saldo();
+					}
+				}
+				else {
+					alert("Coloque a conta correta novamente");
+					transferencia()
+				}
+			}
+		}
+
+
+		inicio();
+	</script>
+
+	<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">GABRIEL AZEVEDO</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">2400.00000000000</mso:Order>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">GABRIEL AZEVEDO</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ReferenceId msdt:dt="string"></mso:ReferenceId>
+<mso:TriggerFlowInfo msdt:dt="string"></mso:TriggerFlowInfo>
+<mso:ContentTypeId msdt:dt="string">0x01010007715694252FA147AD75DD5D81F5DACE</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+	<title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
